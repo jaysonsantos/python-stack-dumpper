@@ -15,3 +15,6 @@ kill -SIGQUIT PID
 ```
 
 And if you want, you can call `stack_dumpper.dump_data()` at any time on your code or debug session.
+
+## See it in action
+[![asciicast](https://asciinema.org/a/1zverhcc4tsqj6rd8jwge7y26.png)](https://asciinema.org/a/1zverhcc4tsqj6rd8jwge7y26)
