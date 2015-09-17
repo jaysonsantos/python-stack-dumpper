@@ -8,7 +8,7 @@ import threading
 
 lock = threading.Lock()
 
-def call_once(function):
+def _call_once(function):
     @functools.wraps(function)
     def call_function(*args, **kwargs):
         if hasattr(function, 'called'):
@@ -35,7 +35,7 @@ def _dump_data():
             log('=' * 80, '\n\n\n')
 
 
-@call_once
+@_call_once
 def setup_dumpper():
     def dump_data(*args, **kwargs):
         threading.Thread(target=_dump_data).start()
