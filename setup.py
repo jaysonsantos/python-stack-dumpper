@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='stack_dumpper',
-    version='0.0.1',
+    version='0.0.2',
     author='Jayson Reis',
     author_email='santosdosreis@gmail.com',
     description='Dump stack trace from all threads (including main thread) when CRTL + \ is pressed or SIGQUIT is received.',

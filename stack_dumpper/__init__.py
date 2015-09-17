@@ -1,1 +1,1 @@
-from .dumpper import setup_dumpper
+from .dumpper import dump_data, setup_dumpper
