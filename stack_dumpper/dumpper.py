@@ -32,7 +32,7 @@ def _dump_data():
             threads = {thread.ident: thread for thread in threading.enumerate()}
             for ident, frame in sys._current_frames().items():
                 log('=' * 80)
-                log('Thead', threads[ident].name, ident)
+                log('Thread', threads[ident].name, ident)
                 log(''.join(traceback.format_stack(frame)))
                 log('=' * 80, '\n\n\n')
 
