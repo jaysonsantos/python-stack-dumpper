@@ -2,8 +2,9 @@ from __future__ import print_function
 import functools
 import signal
 import sys
-import traceback
 import threading
+import time
+import traceback
 
 lock = threading.Lock()
 
@@ -11,12 +12,13 @@ lock = threading.Lock()
 def call_once(function):
     @functools.wraps(function)
     def call_function(*args, **kwargs):
-        if hasattr(function, 'called'):
-            return
-        try:
-            return function(*args, **kwargs)
-        finally:
-            setattr(function, 'called', True)
+        with lock:
+            if hasattr(function, 'called'):
+                return
+            try:
+                return function(*args, **kwargs)
+            finally:
+                setattr(function, 'called', True)
     return call_function
 
 
@@ -42,3 +44,13 @@ def dump_data(*args, **kwargs):
 @call_once
 def setup_dumpper():
     signal.signal(signal.SIGQUIT, dump_data)
+
+
+@call_once
+def setup_periodic_dumpper(seconds):
+    def dump_worker():
+        while True:
+            time.sleep(seconds)
+            _dump_data()
+
+    threading.Thread(target=dump_worker).start()
