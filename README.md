@@ -3,7 +3,7 @@ Dump stack traces when SIGQUIT is received
 
 ## Installing
 ```
-pip install stack_dummper
+pip install stack_dumpper
 ```
 
 ## Usage
